@@ -43,20 +43,20 @@ Add line-by-line comments wheres prompted in the code below, explaining what eac
 # ------ WHAT HAPPENS HERE? ------ #
 # ------ comment line-by-line ---- #
 
-# The line below...
+# Creates a sequence from 0 to 8.
 time_yr <- seq(from = 0, to = 8, by = 1)
 
-# The line below...
+# Creates a matrices based on the size of fish_year0 (col) and time_yr (row)
 proj_year <- matrix(ncol = length(fish_year0), nrow = length(time_yr))
 
-# The line below...
+# This line puts fish_year0 as the first row of the matrices.
 proj_year[1, ] <- fish_year0
 
-# The for loop below...
+# This loop populates each row of proj_year with the dot product of fish_leslie dot the previous proj_year. 
+# Starts at year 2.
 for (i in 2:length(time_yr)) {
   proj_year[i,] <- fish_leslie %*% proj_year[i-1,]
 }
-
 
 # The rest is wrangling & visualization (run to check it out):
 colnames(proj_year) <- c("eggs", "fry", "juvenile", "adult")
